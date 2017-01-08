@@ -1,0 +1,29 @@
+class Timer extends AsyncTask<String, Void, Void>{
+
+        @Override
+        public void onPreExecute(){}
+
+        @Override
+        public Void doInBackground(String... params){
+
+            new TimerRun().run();
+
+            return null;
+        }
+
+        public class TimerRun extends Thread{
+
+            public void run(){
+                while(true){
+                    time++;
+                    try {
+                        sleep(1000);
+                    }catch(InterruptedException e){
+
+                    }
+                }
+            }
+
+        }
+
+    }

@@ -1,0 +1,404 @@
+    public void clicktwo(View view) {
+
+        Coordinate temp1 = new Coordinate(0, 0, 0);
+        Coordinate temp2 = new Coordinate(0, 0, 0);
+
+        int id = view.getId();
+
+        if (PersistanceManager.playerturn) {
+            if (id == player11.getId()) {
+
+                resetButtons(view);
+                player11.setIsSlected();
+                player11.setBackgroundResource(R.drawable.playeroneselected);
+                //player11.setBackgroundColor(view.getResources().getColor(R.color.button1pressed));
+
+            } else if (id == player12.getId()) {
+
+                resetButtons(view);
+                player12.setIsSlected();
+                player12.setBackgroundResource(R.drawable.playeroneselected);
+                //player12.setBackgroundColor(view.getResources().getColor(R.color.button1pressed));
+
+            } else if (id == player13.getId()) {
+
+                resetButtons(view);
+                player13.setIsSlected();
+                player13.setBackgroundResource(R.drawable.playeroneselected);
+                //player13.setBackgroundColor(view.getResources().getColor(R.color.button1pressed));
+            }
+        } else {
+            if (id == player21.getId()) {
+
+                resetButtons(view);
+                player21.setIsSlected();
+                player21.setBackgroundResource(R.drawable.playertwoselected);
+                //player21.setBackgroundColor(view.getResources().getColor(R.color.button2pressed));
+
+            } else if (id == player22.getId()) {
+
+                resetButtons(view);
+                player22.setIsSlected();
+                player22.setBackgroundResource(R.drawable.playertwoselected);
+                //player22.setBackgroundColor(view.getResources().getColor(R.color.button2pressed));
+
+            } else if (id == player23.getId()) {
+
+                resetButtons(view);
+                player23.setIsSlected();
+                player23.setBackgroundResource(R.drawable.playertwoselected);
+                //player23.setBackgroundColor(view.getResources().getColor(R.color.button2pressed));
+            }
+        }
+
+        if(id == token1.getId()){
+
+            if(player11.isClicked()){
+
+                temp1 = player11.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player11.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+
+                }
+
+                player11.setIsNotSelected();
+                player11.setBackgroundResource(R.drawable.playerone);
+                //player11.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+            }else if(player12.isClicked()){
+
+                temp1 = player12.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player12.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player12.setIsNotSelected();
+                player12.setBackgroundResource(R.drawable.playerone);
+                //player12.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            }else if(player13.isClicked()){
+
+                temp1 = player13.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player13.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player13.setIsNotSelected();
+                player13.setBackgroundResource(R.drawable.playerone);
+                //player13.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            }else if(player21.isClicked()){
+
+                temp1 = player21.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player21.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player21.setIsNotSelected();
+                player21.setBackgroundResource(R.drawable.playertwo);
+                //player21.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }else if(player22.isClicked()){
+
+                temp1 = player22.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player22.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player22.setIsNotSelected();
+                player22.setBackgroundResource(R.drawable.playertwo);
+                //player22.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }else if(player23.isClicked()){
+
+                temp1 = player23.getCoord();
+                temp2 = token1.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player23.setCoord(temp2);
+                    token1.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player23.setIsNotSelected();
+                player23.setBackgroundResource(R.drawable.playertwo);
+                //player23.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }
+
+        }else if(id == token2.getId()){
+
+            if(player11.isClicked()){
+
+                temp1 = player11.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player11.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player11.setIsNotSelected();
+                player11.setBackgroundResource(R.drawable.playerone);
+                //player11.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+            }else if(player12.isClicked()){
+
+                temp1 = player12.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player12.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player12.setIsNotSelected();
+                player12.setBackgroundResource(R.drawable.playerone);
+                //player12.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            }else if(player13.isClicked()){
+
+                temp1 = player13.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player13.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player13.setIsNotSelected();
+                player13.setBackgroundResource(R.drawable.playerone);
+                //player13.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            }else if(player21.isClicked()){
+
+                temp1 = player21.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player21.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player21.setIsNotSelected();
+                player21.setBackgroundResource(R.drawable.playertwo);
+                //player21.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }else if(player22.isClicked()){
+
+                temp1 = player22.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player22.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player22.setIsNotSelected();
+                player22.setBackgroundResource(R.drawable.playertwo);
+                //player22.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }else if(player23.isClicked()){
+
+                temp1 = player23.getCoord();
+                temp2 = token2.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player23.setCoord(temp2);
+                    token2.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player23.setIsNotSelected();
+                player23.setBackgroundResource(R.drawable.playertwo);
+                //player23.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }
+
+        }else if(id == token3.getId()) {
+
+            if (player11.isClicked()) {
+
+                temp1 = player11.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player11.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player11.setIsNotSelected();
+                player11.setBackgroundResource(R.drawable.playerone);
+                //player11.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+            } else if (player12.isClicked()) {
+
+                temp1 = player12.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player12.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player12.setIsNotSelected();
+                player12.setBackgroundResource(R.drawable.playerone);
+                //player12.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            } else if (player13.isClicked()) {
+
+                temp1 = player13.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player13.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    onWin(isWin(player11.getCoord(), player12.getCoord(), player13.getCoord(), 1));
+                }
+
+                player13.setIsNotSelected();
+                player13.setBackgroundResource(R.drawable.playerone);
+                //player13.setBackgroundColor(view.getResources().getColor(R.color.button1back));
+
+
+            } else if (player21.isClicked()) {
+
+                temp1 = player21.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player21.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player21.setIsNotSelected();
+                player21.setBackgroundResource(R.drawable.playertwo);
+                //player21.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            } else if (player22.isClicked()) {
+
+                temp1 = player22.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player22.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player22.setIsNotSelected();
+                player22.setBackgroundResource(R.drawable.playertwo);
+                //player22.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            } else if (player23.isClicked()) {
+
+                temp1 = player23.getCoord();
+                temp2 = token3.getCoord();
+
+                if(legalMove(temp1, temp2)) {
+
+                    player23.setCoord(temp2);
+                    token3.setCoord(temp1);
+                    isTurn = !isTurn;
+                    PersistanceManager.getpUser().getMyStats().addMove();
+                    onWin(isWin(player21.getCoord(), player22.getCoord(), player23.getCoord(), 2));
+
+                }
+
+                player23.setIsNotSelected();
+                player23.setBackgroundResource(R.drawable.playertwo);
+                //player23.setBackgroundColor(view.getResources().getColor(R.color.button2back));
+
+            }
+        }
+
+    }
+
+    public void onWin(boolean isWin){
+
+        endAnimation();
+
+    }
